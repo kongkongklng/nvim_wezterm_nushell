@@ -14,6 +14,12 @@ return {
         translator = true, ---@type boolean
         translate_problems = true, ---@type boolean
       },
+      ---@type lc.storage
+      storage = {
+        home = "C:UserskongklngAppDataLocal\\nvimleetcode_data",
+        cache = "C:UserskongklngAppDataLocal\\nvimleetcode_cache",
+      },
+
       -- configuration goes here
     },
   },
