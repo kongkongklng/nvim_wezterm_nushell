@@ -15,3 +15,27 @@ keymap.set("i", "jk", "<ESC>")
 -- 单行或多行移动
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- 调整文件树宽度
+map("n", "<leader><Left>", function()
+  -- 聚焦左侧 Neo-tree 窗口
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.api.nvim_buf_get_name(buf):match("Neotree") then
+      vim.api.nvim_set_current_win(win)
+      vim.cmd("vertical resize -5")
+      return
+    end
+  end
+end)
+
+map("n", "<leader><Right>", function()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.api.nvim_buf_get_name(buf):match("Neotree") then
+      vim.api.nvim_set_current_win(win)
+      vim.cmd("vertical resize +5")
+      return
+    end
+  end
+end)
